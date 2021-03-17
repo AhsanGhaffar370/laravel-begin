@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserController2;
+use App\Http\Controllers\FormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +48,6 @@ Route::get('aboutus',function(){
 // Route::view('aboutus1', 'about');
 
 Route::get("myuser2",[UserController2::class, 'loadView']);
+
+Route::post('userform',[FormController::class, 'getdata']);
+Route::view('userlogin','form');
