@@ -7,6 +7,7 @@ use App\Http\Controllers\DB_conn;
 use App\Http\Controllers\EmpController;
 use App\Http\Controllers\API_getdata;
 
+use App\Http\Controllers\LoginFormController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -101,3 +102,27 @@ Route::get('db_connect',[DB_conn::class,'get']);
 Route::get('emps',[EmpController::class,'getdata']);
 
 Route::get('api_call',[API_getdata::class,'get_api']);
+
+
+
+
+Route::POST('loginreq',[LoginFormController::class,'userlogin']);
+
+// Route::view('loginform','login_form');
+
+Route::view("userprofile",'userLoggedin');
+
+
+Route::get('logout',function(){
+    if((session()->has('email'))){
+        session()->pull("email",null);
+    }
+    return redirect('loginform');
+});
+
+Route::get('loginform',function(){
+    if((session()->has('email'))){
+        return redirect('userprofile');
+    }
+    return view('login_form');
+});
