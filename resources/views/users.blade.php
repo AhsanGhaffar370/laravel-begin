@@ -8,6 +8,6 @@
 </head>
 <body>
 <x-header componentName="User"/>
-    <h1>User Page</h1>
+    <h1>User Page {{$user}}</h1>
 </body>
 </html>

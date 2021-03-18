@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserController2;
+use App\Http\Controllers\DB_conn;
+use App\Http\Controllers\EmpController;
+use App\Http\Controllers\API_getdata;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,3 +93,11 @@ Route::group(['middleware'=>['AgeCheckMiddleware','height']],function(){
 // Route::get('/posts/{post}/comments/{comment}', function ($postId, $commentId) {
 //     //
 // });
+
+
+
+Route::get('db_connect',[DB_conn::class,'get']);
+
+Route::get('emps',[EmpController::class,'getdata']);
+
+Route::get('api_call',[API_getdata::class,'get_api']);
