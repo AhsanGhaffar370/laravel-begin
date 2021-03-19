@@ -8,6 +8,19 @@ use App\Http\Controllers\EmpController;
 use App\Http\Controllers\API_getdata;
 
 use App\Http\Controllers\LoginFormController;
+
+use App\Http\Controllers\StudentController;
+
+use App\Http\Controllers\ShowDataController;
+
+
+
+
+// use App\Post;
+// use Illuminate\Http\Request;
+
+
+use App\Http\Controllers\PostsController;   
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -126,3 +139,15 @@ Route::get('loginform',function(){
     }
     return view('login_form');
 });
+
+
+Route::view('addstu','addStudent');
+
+Route::post('addstu',[StudentController::class,'addstudent']);
+
+Route::get('showemps',[ShowDataController::class, 'show']);
+
+
+Route::get('posts',[PostsController::class, 'index']);
+
+// Route::get('/posts', 'PostsController@index')->name('posts.index');

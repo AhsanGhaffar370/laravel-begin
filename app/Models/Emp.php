@@ -9,5 +9,5 @@ class Emp extends Model
 {
     use HasFactory;
 
-    public $table='students';
+    public $table='emps';
 }
