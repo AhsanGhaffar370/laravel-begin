@@ -7,20 +7,14 @@ use App\Http\Controllers\DB_conn;
 use App\Http\Controllers\EmpController;
 use App\Http\Controllers\API_getdata;
 
+use App\Http\Controllers\FormController;
+
 use App\Http\Controllers\LoginFormController;
 
 use App\Http\Controllers\StudentController;
 
-use App\Http\Controllers\ShowDataController;
+use App\Http\Controllers\CRUD_Controller;
 
-
-
-
-// use App\Post;
-// use Illuminate\Http\Request;
-
-
-use App\Http\Controllers\PostsController;   
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -83,10 +77,14 @@ Route::get('aboutus',function(){
 
 Route::get("myuser2",[UserController2::class, 'loadView']);
 
-Route::post("userform",[FormController::class, 'getdata']);
-Route::view('userlogin', 'form');
+Route::post("disp-form-data",[FormController::class, 'getdata']);
+Route::view('submit-req', 'form');
 
 
+
+////////////////
+// Global, Group, Route Middleware
+//////////////// 
 Route::view('noaccess1','noaccess');
 
 // Route::group(['middleware'=>['AgeCheckMiddleware']],function(){
@@ -101,53 +99,79 @@ Route::group(['middleware'=>['AgeCheckMiddleware','height']],function(){
     Route::view('access', 'access');
 });
 
-
 // Route::view('home', 'home')->middleware('AgeCheckMiddleware');
-
 // Route::get('/posts/{post}/comments/{comment}', function ($postId, $commentId) {
 //     //
 // });
+////////////////
+// End of Global, Group, Route Middleware
+//////////////// 
 
 
-
-Route::get('db_connect',[DB_conn::class,'get']);
-
-Route::get('emps',[EmpController::class,'getdata']);
 
 Route::get('api_call',[API_getdata::class,'get_api']);
 
 
+////////////////
+// Login System using Session
+//////////////// 
+// after form submission of loginform, in form action we provide loginreq link to send data to LoginFormController which create a session.
+Route::get('loginform',[LoginFormController::class,'check_session']);
+
+Route::post('userprofile',[LoginFormController::class,'set_session']);
+
+Route::get('logout',[LoginFormController::class,'remove_session']);
+
+Route::get('profile',[LoginFormController::class,'view_session']);
+
+Route::get('user_login',[LoginFormController::class,'check_session2']);
+// Route::view('user_login','login_form');
+// Route::view('profile','userLoggedin');
+
+// Route::post('loginreq',[LoginFormController::class,'userlogin']);
+
+// Route::post('loginreq',[LoginFormController::class,'userlogin']);
 
 
-Route::POST('loginreq',[LoginFormController::class,'userlogin']);
-
-// Route::view('loginform','login_form');
-
-Route::view("userprofile",'userLoggedin');
+////////////////
+// End of Login System using Session
+//////////////// 
 
 
-Route::get('logout',function(){
-    if((session()->has('email'))){
-        session()->pull("email",null);
-    }
-    return redirect('loginform');
-});
-
-Route::get('loginform',function(){
-    if((session()->has('email'))){
-        return redirect('userprofile');
-    }
-    return view('login_form');
-});
+////////////////
+// Simple Database Connectivity 
+//////////////// 
+Route::get('db_connect',[DB_conn::class,'get']);
+Route::get('emps',[EmpController::class,'getdata']);
+////////////////
+// End of Simple Database Connectivity 
+//////////////// 
 
 
+////////////////
+// Complete CRUD System 
+//////////////// 
 Route::view('addstu','addStudent');
 
 Route::post('addstu',[StudentController::class,'addstudent']);
 
-Route::get('showemps',[ShowDataController::class, 'show']);
+Route::get('read-data',[CRUD_Controller::class, 'show']);
+Route::get('delete-data/{id}',[CRUD_Controller::class, 'delete']);
+Route::get('update-data/{id}',[CRUD_Controller::class, 'viewdata']);
+Route::post('update-data',[CRUD_Controller::class, 'update']);
+////////////////
+// End of Complete CRUD System 
+//////////////// 
 
 
-Route::get('posts',[PostsController::class, 'index']);
+////////////////
+// Simple Layout of application
+//////////////// 
+Route::view('layout','layout');
+Route::view('page1','page1');
+Route::view('page2','page2');
+////////////////
+// End of Simple Layout of application
+//////////////// 
 
-// Route::get('/posts', 'PostsController@index')->name('posts.index');
+

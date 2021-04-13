@@ -8,13 +8,19 @@
 </head>
 <body>
     <h1>Login Form</h1>
-
-    <form action="/loginreq" method="POST">
+    <span class="error_field" style="color: red;">
+        {{session('login_error')}}
+    </span>
+    <span class="error_field" style="color: red;">
+        {{session('noaccess')}}
+    </span>
+    <form action="/userprofile" method="POST">
         @csrf
         <input type="text" name="email123" placeholder="Email" />
         <input type="text" name="password123" placeholder="Password" />
 
         <input type="submit" value="submit" />
+        
     </form>
 </body>
 </html>

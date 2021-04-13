@@ -20,8 +20,7 @@ class StudentController extends Controller
         // $student->set_firstName($req->firstName);
         $student->save();
 
-        return redirect('addstu');
+        return redirect('read-data');
         
-
     }
 }

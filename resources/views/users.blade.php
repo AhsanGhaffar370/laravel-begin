@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-<x-header componentName="User"/>
+<x-header componentName="admin"/>
     <h1>User Page {{$user}}</h1>
 </body>
 </html>

@@ -7,21 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-    // public $firstName;
-    // public $lastName;
-    // public $address;
-
-    // function set_firstName($firstName) {
-    //     $this->firstName = $firstName;
-    // }
-    // function set_lastName($lastName) {
-    //     $this->lastName = $lastName;
-    // }
-    // function set_address($address) {
-    //     $this->address = $address;
-    // }
-
-
     use HasFactory;
     public $timestamps=false;
+    // public $table='emps';
+
+    // function getFirstNameAttribute($value) {
+    //     return $value;
+    // }
+    // function setFirstNameAttribute($value) {
+    //     return $this->attributes['firstName'] = "Mr.". $value;
+    // }  
 }

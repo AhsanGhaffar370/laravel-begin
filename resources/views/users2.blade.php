@@ -23,10 +23,10 @@
 
 <script>
 
-    let data=@json($usersname) //convert php variable(username) to javascript
+    let data = @json($usersname); //convert php variable(username) to javascript
     // console.log($data)
     // console.warn(data[0])
-    console.warn(data)
+    console.warn(data);
     // console.warn(data[0])
     // console.warn(data[0])
 </script>
