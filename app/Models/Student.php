@@ -9,7 +9,7 @@ class Student extends Model
 {
     use HasFactory;
     public $timestamps=false;
-    // public $table='emps';
+    // protected $table='emps'; //if your table name is different, then you can provide name of table in this way
 
     // function getFirstNameAttribute($value) {
     //     return $value;

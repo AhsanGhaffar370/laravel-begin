@@ -54,7 +54,12 @@ class Kernel extends HttpKernel
         'height'=>[
 
             \App\Http\Middleware\checkAccess2::class,
-        ]
+        ],
+
+        'loginAuthen'=>[
+
+            \App\Http\Middleware\loginAuth::class,
+        ],
     ];
 
     /**

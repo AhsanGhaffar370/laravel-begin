@@ -20,6 +20,8 @@ class CRUD_Controller extends Controller
     function delete($id){
         $data= Student::find($id);
         $data->delete();
+        // Student::destroy(array(3,4));// delete multiple records
+
         return redirect('read-data');
     }
 

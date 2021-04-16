@@ -16,9 +16,22 @@
     </span>
     <form action="/userprofile" method="POST">
         @csrf
-        <input type="text" name="email123" placeholder="Email" />
-        <input type="text" name="password123" placeholder="Password" />
+        <input type="text" name="mail" placeholder="Email" />
+        <span class="error_field" style="color: red;">
+            @error('mail')
+                {{$message}}
+            @enderror
+        </span>
+        <br><br>
 
+        <input type="text" name="pass" placeholder="Password" />
+        <span class="error_field" style="color: red;">
+            @error('pass')
+                {{$message}}
+            @enderror
+        </span>
+        <br><br>
+        
         <input type="submit" value="submit" />
         
     </form>

@@ -122,9 +122,20 @@ Route::post('userprofile',[LoginFormController::class,'set_session']);
 
 Route::get('logout',[LoginFormController::class,'remove_session']);
 
-Route::get('profile',[LoginFormController::class,'view_session']);
 
-Route::get('user_login',[LoginFormController::class,'check_session2']);
+
+
+Route::group(['middleware'=>['loginAuthen']],function(){
+
+    Route::get('profile',[LoginFormController::class,'userprofile']);
+    Route::get('profile2',[LoginFormController::class,'userprofile2']);
+    Route::get('profile3',[LoginFormController::class,'userprofile3']);
+});
+
+
+
+// Route::get('user_login',[LoginFormController::class,'check_session2']);
+
 // Route::view('user_login','login_form');
 // Route::view('profile','userLoggedin');
 
