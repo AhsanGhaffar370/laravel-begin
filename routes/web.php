@@ -15,6 +15,7 @@ use App\Http\Controllers\StudentController;
 
 use App\Http\Controllers\CRUD_Controller;
 
+use App\Http\Controllers\TodoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -186,3 +187,7 @@ Route::view('page2','page2');
 //////////////// 
 
 
+
+Route::get('todo_show',[TodoController::class, 'show']);
+
+Route::get('todo_delete/{id}',[TodoController::class, 'destroy']);
