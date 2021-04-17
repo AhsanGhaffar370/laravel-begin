@@ -188,6 +188,21 @@ Route::view('page2','page2');
 
 
 
+
+
+////////////////
+// Todo app
+////////////////
+
 Route::get('todo_show',[TodoController::class, 'show']);
 
 Route::get('todo_delete/{id}',[TodoController::class, 'destroy']);
+
+Route::get('todo_edit/{id}',[TodoController::class, 'edit']);
+
+// Route::post('todo_update/{id}',[TodoController::class, 'update']);
+Route::post('todo_update/{id}',[TodoController::class, 'update'])->name('todo.update');
+
+Route::get('add',[TodoController::class, 'create']);
+
+Route::post('todo_submit',[TodoController::class, 'store']);
