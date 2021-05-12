@@ -6,6 +6,8 @@ use App\Http\Controllers\UserController2;
 use App\Http\Controllers\DB_conn;
 use App\Http\Controllers\EmpController;
 use App\Http\Controllers\API_getdata;
+// use App\Http\Controllers\ApiController;
+
 
 use App\Http\Controllers\FormController;
 
@@ -112,6 +114,8 @@ Route::group(['middleware'=>['AgeCheckMiddleware','height']],function(){
 
 Route::get('api_call',[API_getdata::class,'get_api']);
 
+// Route::get('get_api',[ApiController::class,'get_api']); api always called in api file
+ 
 
 ////////////////
 // Login System using Session
