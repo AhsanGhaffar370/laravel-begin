@@ -21,3 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('get_api/{id?}',[ApiController::class,'get_api']);
+
+Route::post('add_stu_api',[ApiController::class,'post_api']);
+
+Route::put('update_stu_api',[ApiController::class,'put_api']);
+
